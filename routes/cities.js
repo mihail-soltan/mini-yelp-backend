@@ -1,6 +1,5 @@
 import express from 'express'
-import { getAll, getByID } from '../controllers/cities.js'
-import pool from '../utilities.js'
+import { getAll, getByID, postNewCity } from '../controllers/cities.js'
 
 const router = express.Router()
 
@@ -8,5 +7,6 @@ router.get('/', getAll)
 
 
 router.get('/:id', getByID)
+router.post('/', postNewCity)
 
 export default router

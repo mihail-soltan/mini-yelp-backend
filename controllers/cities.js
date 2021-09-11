@@ -33,3 +33,29 @@ if(!err){
 
     })
 }
+
+// post test by LH
+
+export function postNewCity( req, res){
+
+    pool.getConnection((err, connection)=>{
+        if(err) throw err
+        console.log(`connection as id ${connection.threadId}`)
+
+        const params = req.body
+
+        //query(sqlString, callback)
+        connection.query('INSERT INTO cities SET ?',params , (err, rows)=>{
+            connection.release()//return the connection to pool
+
+            if(!err){
+                res.send(`New City as: ${params.name} has been added`)
+            }else{
+                console.log(err)
+            }
+        })
+
+        console.log(req.body)
+
+    })
+}
