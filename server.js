@@ -13,10 +13,10 @@ app.use(cors());
 dotenv.config()
 
 
+app.use(express.urlencoded({extended: true}))
 app.use('/restaurants', restaurantRouter);
 app.use('/cuisines', cuisineRouter);
 app.use('/cities', citiesRouter)
-app.use(express.urlencoded({extended: true}))
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log("Server is running on 3000 or process.env.PORT ")
